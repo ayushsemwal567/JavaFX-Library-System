@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="application.MyFinesController"
+            style="-fx-background-color: linear-gradient(to bottom right, #667eea 0%, #764ba2 100%);">
+    
+    <top>
+        <VBox alignment="CENTER" spacing="10" style="-fx-background-color: rgba(255,255,255,0.9); -fx-padding: 20;">
+            <HBox alignment="CENTER" spacing="15">
+                <Label text="My Fines" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <Label fx:id="studentNameLabel" text="Student Name" style="-fx-font-size: 16px; -fx-text-fill: #7f8c8d;"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <VBox spacing="20" style="-fx-padding: 20;">
+            
+            <!-- Summary Cards -->
+            <HBox spacing="20" alignment="CENTER">
+                <VBox alignment="CENTER" spacing="5" style="-fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 10; -fx-padding: 15; -fx-min-width: 150;">
+                    <Label fx:id="totalFinesLabel" text="Total: $0.00" style="-fx-font-weight: bold; -fx-text-fill: #e74c3c;"/>
+                    <Label text="Outstanding" style="-fx-text-fill: #7f8c8d;"/>
+                </VBox>
+                
+                <VBox alignment="CENTER" spacing="5" style="-fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 10; -fx-padding: 15; -fx-min-width: 150;">
+                    <Label fx:id="overdueBooksLabel" text="Overdue: 0" style="-fx-font-weight: bold; -fx-text-fill: #f39c12;"/>
+                    <Label text="Books" style="-fx-text-fill: #7f8c8d;"/>
+                </VBox>
+                
+                <VBox alignment="CENTER" spacing="5" style="-fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 10; -fx-padding: 15; -fx-min-width: 150;">
+                    <Label fx:id="paidFinesLabel" text="Paid: $0.00" style="-fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+                    <Label text="This Month" style="-fx-text-fill: #7f8c8d;"/>
+                </VBox>
+                
+                <VBox alignment="CENTER" spacing="5" style="-fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 10; -fx-padding: 15; -fx-min-width: 150;">
+                    <Label fx:id="dailyRateLabel" text="Rate: $0.50" style="-fx-font-weight: bold; -fx-text-fill: #9b59b6;"/>
+                    <Label text="Per Day" style="-fx-text-fill: #7f8c8d;"/>
+                </VBox>
+            </HBox>
+            
+            <!-- Tab Pane for Different Views -->
+            <TabPane fx:id="finesTabPane" style="-fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 10;">
+                
+                <!-- Current Fines Tab -->
+                <Tab text="Current Fines" closable="false">
+                    <VBox spacing="15" style="-fx-padding: 20;">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="Outstanding Fines:" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                            <Button text="Refresh" onAction="#refreshCurrentFines" 
+                                    style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 100; -fx-pref-height: 30; -fx-cursor: hand;"/>
+                        </HBox>
+                        
+                        <TableView fx:id="currentFinesTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="fineBookTitleCol" text="Book Title" prefWidth="200"/>
+                                <TableColumn fx:id="fineBookAuthorCol" text="Author" prefWidth="150"/>
+                                <TableColumn fx:id="dueDateCol" text="Due Date" prefWidth="120"/>
+                                <TableColumn fx:id="daysOverdueCol" text="Days Overdue" prefWidth="120"/>
+                                <TableColumn fx:id="fineAmountCol" text="Fine Amount" prefWidth="120"/>
+                                <TableColumn fx:id="fineStatusCol" text="Status" prefWidth="100"/>
+                                <TableColumn fx:id="fineActionsCol" text="Actions" prefWidth="150"/>
+                            </columns>
+                        </TableView>
+                        
+                        <!-- Payment Section -->
+                        <VBox spacing="10" style="-fx-background-color: #f8f9fa; -fx-background-radius: 5; -fx-padding: 15;">
+                            <Label text="Payment Options:" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                            <HBox spacing="20" alignment="CENTER_LEFT">
+                                <Button text="Pay All Fines" onAction="#payAllFines" 
+                                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 120; -fx-pref-height: 35; -fx-cursor: hand;"/>
+                                <!-- Remove or comment out buttons with missing handlers -->
+                                <!-- <Button text="Request Extension" onAction="#requestExtension" ... /> -->
+                                <!-- <Button text="Contact Librarian" onAction="#contactLibrarian" ... /> -->
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                </Tab>
+                
+                <!-- Fine History Tab -->
+                <Tab text="Fine History" closable="false">
+                    <VBox spacing="15" style="-fx-padding: 20;">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="Complete Fine History:" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                            <Button text="Refresh" onAction="#refreshFineHistory" 
+                                    style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 100; -fx-pref-height: 30; -fx-cursor: hand;"/>
+                        </HBox>
+                        
+                        <TableView fx:id="fineHistoryTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="historyBookTitleCol" text="Book Title" prefWidth="200"/>
+                                <TableColumn fx:id="historyFineDateCol" text="Fine Date" prefWidth="120"/>
+                                <TableColumn fx:id="historyFineAmountCol" text="Fine Amount" prefWidth="120"/>
+                                <TableColumn fx:id="historyPaymentDateCol" text="Payment Date" prefWidth="120"/>
+                                <TableColumn fx:id="historyPaymentAmountCol" text="Payment Amount" prefWidth="120"/>
+                                <TableColumn fx:id="historyStatusCol" text="Status" prefWidth="100"/>
+                                <TableColumn fx:id="historyReceiptCol" text="Receipt" prefWidth="100"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+                
+                <!-- Fine Policy Tab -->
+                <Tab text="Fine Policy" closable="false">
+                    <VBox spacing="15" style="-fx-padding: 20;">
+                        <VBox spacing="15" style="-fx-background-color: #f8f9fa; -fx-background-radius: 5; -fx-padding: 20;">
+                            <Label text="Library Fine Policy:" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                            
+                            <VBox spacing="10">
+                                <Label text="Fine Rates:" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                                <Label text="• Overdue books: $0.50 per day" style="-fx-text-fill: #7f8c8d;"/>
+                                <Label text="• Maximum fine per book: $25.00" style="-fx-text-fill: #7f8c8d;"/>
+                                <Label text="• Lost books: Replacement cost + $10.00 processing fee" style="-fx-text-fill: #7f8c8d;"/>
+                            </VBox>
+                            
+                            <VBox spacing="10">
+                                <Label text="Due Dates:" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                                <Label text="• Standard loan period: 14 days" style="-fx-text-fill: #7f8c8d;"/>
+                                <Label text="• Renewals: Up to 2 times (if no holds)" style="-fx-text-fill: #7f8c8d;"/>
+                                <Label text="• Grace period: 3 days (no fines)" style="-fx-text-fill: #7f8c8d;"/>
+                            </VBox>
+                            
+                            <VBox spacing="10">
+                                <Label text="Payment Methods:" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                                <Label text="• Cash payment at library desk" style="-fx-text-fill: #7f8c8d;"/>
+                                <Label text="• Credit/Debit card" style="-fx-text-fill: #7f8c8d;"/>
+                                <Label text="• Online payment (coming soon)" style="-fx-text-fill: #7f8c8d;"/>
+                            </VBox>
+                            
+                            <VBox spacing="10">
+                                <Label text="Important Notes:" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                                <Label text="• Fines must be paid before borrowing new books" style="-fx-text-fill: #7f8c8d;"/>
+                                <Label text="• Accounts with $25+ in fines may be suspended" style="-fx-text-fill: #7f8c8d;"/>
+                                <Label text="• Contact librarian for payment arrangements" style="-fx-text-fill: #7f8c8d;"/>
+                            </VBox>
+                        </VBox>
+                    </VBox>
+                </Tab>
+            </TabPane>
+        </VBox>
+    </center>
+    
+    <bottom>
+        <HBox alignment="CENTER" spacing="20" style="-fx-background-color: rgba(255,255,255,0.9); -fx-padding: 15;">
+            <Button text="Back to Dashboard" onAction="#goBackToDashboard" 
+                    style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 150; -fx-pref-height: 35; -fx-cursor: hand;"/>
+            <Label text="© 2024 Library Management System | My Fines" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+        </HBox>
+    </bottom>
+</BorderPane> 

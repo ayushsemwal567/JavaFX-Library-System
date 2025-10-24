@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="application.StudentBooksController"
+            style="-fx-background-color: linear-gradient(to bottom right, #667eea 0%, #764ba2 100%);">
+    
+    <top>
+        <VBox alignment="CENTER" spacing="10" style="-fx-background-color: rgba(255,255,255,0.9); -fx-padding: 20;">
+            <HBox alignment="CENTER" spacing="15">
+                <Label text="📚" style="-fx-font-size: 36px;"/>
+                <VBox alignment="CENTER_LEFT" spacing="5">
+                    <Label text="Available Books" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <Label text="Browse and borrow available books" style="-fx-font-size: 16px; -fx-text-fill: #7f8c8d;"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <VBox spacing="20" style="-fx-padding: 20;">
+            
+            <!-- Search Section -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField" promptText="Search by title, author, or ISBN" 
+                          style="-fx-background-radius: 5; -fx-pref-width: 400; -fx-pref-height: 35;"/>
+                <Button text="🔍 Search" onAction="#searchBooks" 
+                        style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 100; -fx-pref-height: 35; -fx-cursor: hand;"/>
+                <Button text="🔄 Refresh" onAction="#refreshBooks" 
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 100; -fx-pref-height: 35; -fx-cursor: hand;"/>
+            </HBox>
+            
+            <!-- Books Table -->
+            <TableView fx:id="booksTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="titleColumn" text="Title" prefWidth="250"/>
+                    <TableColumn fx:id="authorColumn" text="Author" prefWidth="150"/>
+                    <TableColumn fx:id="yearColumn" text="Year" prefWidth="80"/>
+                    <TableColumn fx:id="isbnColumn" text="ISBN" prefWidth="120"/>
+                    <TableColumn fx:id="availableColumn" text="Available" prefWidth="100"/>
+                    <TableColumn fx:id="borrowColumn" text="Action" prefWidth="100"/>
+                </columns>
+            </TableView>
+            
+            <!-- Status Information -->
+            <HBox spacing="40" alignment="CENTER" style="-fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 10; -fx-padding: 15;">
+                <VBox alignment="CENTER" spacing="5">
+                    <Label fx:id="totalBooksLabel" text="Total Books: 0" style="-fx-font-weight: bold; -fx-text-fill: #3498db;"/>
+                </VBox>
+                <VBox alignment="CENTER" spacing="5">
+                    <Label fx:id="availableBooksLabel" text="Available: 0" style="-fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+                </VBox>
+                <VBox alignment="CENTER" spacing="5">
+                    <Label fx:id="borrowedBooksLabel" text="Borrowed: 0" style="-fx-font-weight: bold; -fx-text-fill: #e67e22;"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+    
+    <bottom>
+        <HBox alignment="CENTER" spacing="20" style="-fx-background-color: rgba(255,255,255,0.9); -fx-padding: 15;">
+            <Button text="← Back to Dashboard" onAction="#goBackToDashboard" 
+                    style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 150; -fx-pref-height: 35; -fx-cursor: hand;"/>
+            <Button text="📖 My Borrowings" onAction="#openMyBorrowings" 
+                    style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 120; -fx-pref-height: 35; -fx-cursor: hand;"/>
+        </HBox>
+    </bottom>
+</BorderPane> 

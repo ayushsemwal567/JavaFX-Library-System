@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="application.AddBookController"
+      style="-fx-background-color: linear-gradient(to bottom right, #f5f7fa 0%, #c3cfe2 100%); -fx-padding: 30;">
+    
+    <!-- Header -->
+    <VBox alignment="CENTER" spacing="10">
+        <Label text="📖" style="-fx-font-size: 48px;"/>
+        <Label text="Add New Book" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+        <Label text="Enter book details to add to the library catalog" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;"/>
+    </VBox>
+    
+    <!-- Form Container -->
+    <VBox alignment="CENTER" spacing="15" style="-fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 10; -fx-padding: 30; -fx-min-width: 400;">
+        
+        <VBox spacing="8">
+            <Label text="Book Title *" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+            <TextField fx:id="titleField" promptText="Enter book title" 
+                      style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-pref-width: 350; -fx-pref-height: 35;"/>
+        </VBox>
+        
+        <VBox spacing="8">
+            <Label text="Author *" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+            <TextField fx:id="authorField" promptText="Enter author name" 
+                      style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-pref-width: 350; -fx-pref-height: 35;"/>
+        </VBox>
+        
+        <HBox spacing="20" alignment="CENTER">
+            <VBox spacing="8">
+                <Label text="Publication Year" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+                <TextField fx:id="yearField" promptText="e.g., 2024" 
+                          style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-pref-width: 150; -fx-pref-height: 35;"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Quantity" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+                <TextField fx:id="quantityField" promptText="e.g., 5" 
+                          style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-pref-width: 150; -fx-pref-height: 35;"/>
+            </VBox>
+        </HBox>
+        
+        <VBox spacing="8">
+            <Label text="ISBN" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+            <TextField fx:id="isbnField" promptText="Enter ISBN (optional)" 
+                      style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-pref-width: 350; -fx-pref-height: 35;"/>
+        </VBox>
+        
+        <HBox spacing="15" alignment="CENTER">
+            <Button text="Add Book" onAction="#handleAddBook" 
+                    style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 120; -fx-pref-height: 40; -fx-cursor: hand;"/>
+            <Button text="Clear Form" onAction="#clearForm" 
+                    style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 120; -fx-pref-height: 40; -fx-cursor: hand;"/>
+            <Button text="Close" onAction="#closeWindow" 
+                    style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 120; -fx-pref-height: 40; -fx-cursor: hand;"/>
+        </HBox>
+        
+        <Label fx:id="messageLabel" textFill="#ff4444" style="-fx-font-weight: bold; -fx-alignment: center;"/>
+        
+        <!-- Help Text -->
+        <VBox spacing="5" style="-fx-background-color: #f8f9fa; -fx-background-radius: 5; -fx-padding: 15;">
+            <Label text="📝 Help:" style="-fx-font-weight: bold; -fx-text-fill: #666;"/>
+            <Label text="• Title and Author are required fields" style="-fx-text-fill: #666; -fx-font-size: 12px;"/>
+            <Label text="• Year should be a valid year (e.g., 2024)" style="-fx-text-fill: #666; -fx-font-size: 12px;"/>
+            <Label text="• Quantity defaults to 1 if not specified" style="-fx-text-fill: #666; -fx-font-size: 12px;"/>
+        </VBox>
+    </VBox>
+</VBox>

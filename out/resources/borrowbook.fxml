@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml" fx:controller="application.BorrowBookController">
+    <Label text="Borrow Book" style="-fx-font-size: 20px;"/>
+    
+    <ComboBox fx:id="bookComboBox" promptText="Select Book"/>
+    <ComboBox fx:id="memberComboBox" promptText="Select Member"/>
+    <DatePicker fx:id="borrowDatePicker" promptText="Borrow Date"/>
+    <DatePicker fx:id="returnDatePicker" promptText="Return Date"/>
+    
+    <Button text="Borrow Book" onAction="#handleBorrowBook"/>
+    <Label fx:id="messageLabel" textFill="red"/>
+</VBox> 

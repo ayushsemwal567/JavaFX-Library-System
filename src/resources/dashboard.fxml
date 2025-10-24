@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="application.DashboardController"
+            style="-fx-background-color: linear-gradient(to bottom right, #f5f7fa 0%, #c3cfe2 100%);">
+    
+    <top>
+        <VBox alignment="CENTER" spacing="10" style="-fx-background-color: rgba(255,255,255,0.9); -fx-padding: 20;">
+            <HBox alignment="CENTER" spacing="15">
+                <Label text="📚" style="-fx-font-size: 36px;"/>
+                <VBox alignment="CENTER_LEFT" spacing="5">
+                    <Label text="Library Management System" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <Label fx:id="welcomeLabel" text="Welcome" style="-fx-font-size: 16px; -fx-text-fill: #7f8c8d;"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <VBox alignment="CENTER" spacing="30" style="-fx-padding: 40;">
+            
+            <!-- Main Menu Grid -->
+            <GridPane alignment="CENTER" hgap="20" vgap="20">
+                
+                <!-- Row 1 -->
+                <VBox alignment="CENTER" spacing="10" style="-fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 10; -fx-padding: 20; -fx-min-width: 200; -fx-min-height: 150;"
+                      GridPane.rowIndex="0" GridPane.columnIndex="0">
+                    <Label text="📖" style="-fx-font-size: 32px;"/>
+                    <Label text="Add Book" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <Button text="Add New Book" onAction="#openAddBook" 
+                            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 120; -fx-pref-height: 35; -fx-cursor: hand;"/>
+                </VBox>
+                
+                <VBox alignment="CENTER" spacing="10" style="-fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 10; -fx-padding: 20; -fx-min-width: 200; -fx-min-height: 150;"
+                      GridPane.rowIndex="0" GridPane.columnIndex="1">
+                    <Label text="🔍" style="-fx-font-size: 32px;"/>
+                    <Label text="View Books" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <Button text="Browse Catalog" onAction="#openViewBooks" 
+                            style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 120; -fx-pref-height: 35; -fx-cursor: hand;"/>
+                </VBox>
+                
+                <VBox alignment="CENTER" spacing="10" style="-fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 10; -fx-padding: 20; -fx-min-width: 200; -fx-min-height: 150;"
+                      GridPane.rowIndex="0" GridPane.columnIndex="2">
+                    <Label text="👥" style="-fx-font-size: 32px;"/>
+                    <Label text="Add Member" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <Button text="Register Member" onAction="#openAddMember" 
+                            style="-fx-background-color: #e67e22; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 120; -fx-pref-height: 35; -fx-cursor: hand;"/>
+                </VBox>
+                
+                <!-- Row 2 -->
+                <VBox alignment="CENTER" spacing="10" style="-fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 10; -fx-padding: 20; -fx-min-width: 200; -fx-min-height: 150;"
+                      GridPane.rowIndex="1" GridPane.columnIndex="0">
+                    <Label text="📚" style="-fx-font-size: 32px;"/>
+                    <Label text="Borrow Book" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <Button text="Lend Book" onAction="#openBorrowBook" 
+                            style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 120; -fx-pref-height: 35; -fx-cursor: hand;"/>
+                </VBox>
+                
+                <VBox alignment="CENTER" spacing="10" style="-fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 10; -fx-padding: 20; -fx-min-width: 200; -fx-min-height: 150;"
+                      GridPane.rowIndex="1" GridPane.columnIndex="1">
+                    <Label text="📊" style="-fx-font-size: 32px;"/>
+                    <Label text="Reports" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <Button text="View Reports" onAction="#openReports" 
+                            style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 120; -fx-pref-height: 35; -fx-cursor: hand;"/>
+                </VBox>
+                
+                <VBox alignment="CENTER" spacing="10" style="-fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 10; -fx-padding: 20; -fx-min-width: 200; -fx-min-height: 150;"
+                      GridPane.rowIndex="1" GridPane.columnIndex="2">
+                    <Label text="⚙️" style="-fx-font-size: 32px;"/>
+                    <Label text="Settings" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <Button text="Configure" onAction="#openSettings" 
+                            style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 120; -fx-pref-height: 35; -fx-cursor: hand;"/>
+                </VBox>
+            </GridPane>
+            
+            <!-- Logout Button -->
+            <Button text="🚪 Logout" onAction="#handleLogout" 
+                    style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 150; -fx-pref-height: 40; -fx-cursor: hand; -fx-font-size: 14px;"/>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-background-color: rgba(255,255,255,0.9); -fx-padding: 10;">
+            <Label text="© 2024 Library Management System | Developed with JavaFX" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

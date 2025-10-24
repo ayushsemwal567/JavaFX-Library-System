@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml" fx:controller="application.AddMemberController">
+    <Label text="Add New Member" style="-fx-font-size: 20px;"/>
+    
+    <TextField fx:id="nameField" promptText="Full Name"/>
+    <TextField fx:id="emailField" promptText="Email Address"/>
+    <TextField fx:id="phoneField" promptText="Phone Number"/>
+    <TextArea fx:id="addressField" promptText="Address" prefRowCount="3"/>
+    
+    <Button text="Add Member" onAction="#handleAddMember"/>
+    <Label fx:id="messageLabel" textFill="red"/>
+</VBox> 

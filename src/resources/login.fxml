@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="application.LoginController" 
+            style="-fx-background-color: linear-gradient(to bottom right, #667eea 0%, #764ba2 100%);">
+   <children>
+      <VBox alignment="CENTER" spacing="20" AnchorPane.topAnchor="50" AnchorPane.bottomAnchor="50" 
+            AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50">
+         <VBox alignment="CENTER" spacing="10">
+            <Label text="📚" style="-fx-font-size: 48px;"/>
+            <Label text="Library Management System" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Please login to continue" style="-fx-font-size: 14px; -fx-text-fill: #e0e0e0;"/>
+         </VBox>
+         <VBox alignment="CENTER" spacing="15" style="-fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 10; -fx-padding: 30;">
+            <Label text="Login" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+            <VBox spacing="8">
+               <Label text="Username" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+               <TextField fx:id="usernameField" promptText="Enter your username" 
+                         style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-pref-width: 250; -fx-pref-height: 35;"/>
+            </VBox>
+            <VBox spacing="8">
+               <Label text="Password" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+               <PasswordField fx:id="passwordField" promptText="Enter your password" 
+                             style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-pref-width: 250; -fx-pref-height: 35;"/>
+            </VBox>
+            <Button fx:id="loginButton" text="Login" onAction="#handleLogin" 
+                    style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 250; -fx-pref-height: 40; -fx-cursor: hand;"/>
+            <Label fx:id="messageLabel" textFill="#ff4444" style="-fx-font-weight: bold;"/>
+            <VBox spacing="10" alignment="CENTER">
+               <Label text="New Student?" style="-fx-font-weight: bold; -fx-text-fill: #666;"/>
+               <Button text="🎓 Register New Student" onAction="#openStudentRegistration" 
+                       style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-pref-width: 250; -fx-pref-height: 40; -fx-cursor: hand;"/>
+            </VBox>
+         </VBox>
+         <Label text="© 2024 Library Management System" style="-fx-font-size: 12px; -fx-text-fill: #e0e0e0;"/>
+      </VBox>
+   </children>
+</AnchorPane>
